@@ -91,22 +91,19 @@
   .hero-inner {
     max-width: 620px;
   }
-.hero-title {
-  font-size: clamp(32px, 5vw, 42px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.55);
-}
 
-.hero-sub {
-  text-shadow: 0 3px 8px rgba(0,0,0,0.55);
-}
-
+  .hero-title {
+    font-size: clamp(32px, 5vw, 42px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.55);
+  }
 
   .hero-sub {
     font-size: 18px;
-    line-height: 1.5;header
+    line-height: 1.5;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.55);
   }
 
   .btn {
@@ -115,6 +112,7 @@
     font-size: 15px;
     border: 1px solid transparent;
     cursor:pointer;
+    margin: 8px;
   }
 
   .btn-dark {
@@ -238,6 +236,17 @@
   </div>
 </header>
 
+<!-- RESTORED HERO SECTION -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Take Control of Your Future</h1>
+    <p class="hero-sub">
+      XThereon is built for moments when traditional money falters — a network designed to help you safeguard value, opportunity, and stability.
+    </p>
+    <button class="btn btn-dark">Get Started</button>
+    <button class="btn btn-light">Learn More</button>
+  </div>
+</section>
 
 <div class="card" id="about">
   <h2 class="section-title">A Currency for Independent Thinkers</h2>
@@ -277,3 +286,6 @@
 <footer>
   © <script>document.write(new Date().getFullYear())</script> XThereon Project — All Rights Reserved
 </footer>
+
+</body>
+</html>
