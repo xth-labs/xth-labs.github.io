@@ -70,4 +70,58 @@
   line-height: 1.6;
   color: #444;
 }
+/* TECHNOLOGY SECTION */
+.tech {
+  padding: 120px 24px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.tech-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tech-sub {
+  font-size: 16px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  background: #fafafa;
+  transition: all 0.25s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.tech-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.tech-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 
