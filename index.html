@@ -1,54 +1,47 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XTHEREON</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
 
-{% include header.html %}
+<body>
 
-<!-- RESTORED HERO SECTION -->
-<section class="hero">
-  <div class="hero-inner">
-    <h1 class="hero-title">Take Control of Your Future</h1>
-    <p class="hero-sub">
-      XThereon is built for moments when traditional money falters — a network designed to help you safeguard value, opportunity, and stability.
-    </p>
-    <button class="btn btn-dark">Get Started</button>
-    <button class="btn btn-light">Learn More</button>
-  </div>
-</section>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="assets/xth-logo.svg" alt="XTHEREON" class="hero-logo">
 
-<div class="card" id="about">
-  <h2 class="section-title">A Currency for Independent Thinkers</h2>
-  <p class="section-body">
-    XThereon (XTH) is created for people who question the system rather than rely on it.  
-    No pre-mine. No insiders. No shortcuts. Just an honest, transparent protocol anyone can verify.
-  </p>
+      <h1 class="hero-title">
+        <span class="swap-text">The Future</span>
+      </h1>
 
-  <div class="pill-row">
-    <div class="pill">No ICO</div>
-    <div class="pill">No Premine</div>
-    <div class="pill">Fully Open Source</div>
-  </div>
-
-  <div class="grid" id="why">
-    <div class="tile">
-      <h3>Built to Endure</h3>
-      <p>
-        Clear rules. Predictable supply. A resilient network that keeps going when other systems pause, freeze, or fail.
+      <p class="hero-sub">
+        A currency built for those who think ahead. Independent. Borderless. Hacker-proof.
       </p>
-    </div>
-    <div class="tile">
-      <h3>Fair From Day One</h3>
-      <p>
-        XTH launches with accessibility as a core principle — ensuring distribution grows naturally and participation is open to everyone.
-      </p>
-    </div>
-    <div class="tile">
-      <h3>A Tool You Can Rely On</h3>
-      <p>
-        XThereon isn’t a promise or a pitch. It’s a practical, reliable way to store your effort and move value when trust in traditional structures fades.
-      </p>
-    </div>
-  </div>
-</div>
 
-{% include footer.html %}
+      <a href="#start" class="hero-cta">Get Started →</a>
+    </div>
+  </section>
+
+  <!-- JS: WORD SWITCHER -->
+  <script>
+    const words = [
+      "The Future",
+      "The Network",
+      "The Signal",
+      "The Protection",
+      "The Escape Plan"
+    ];
+
+    let i = 0;
+    setInterval(() => {
+      document.querySelector(".swap-text").textContent = words[i];
+      i = (i + 1) % words.length;
+    }, 3000);
+  </script>
+
+</body>
+</html>
