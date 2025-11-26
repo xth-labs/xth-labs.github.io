@@ -212,6 +212,67 @@
     font-size:12px;
     color:var(--text-muted);
   }
+  /* ================================
+   MOBILE RESPONSIVE FIXES
+   ================================ */
+@media (max-width: 768px) {
+
+  /* NAVIGATION */
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav ul li {
+    width: auto;
+    font-size: 14px;
+  }
+
+  /* HERO SECTION */
+  .hero-title {
+    font-size: clamp(26px, 7vw, 36px);
+    text-align: center;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* BACKGROUND IMAGE FIX */
+  .hero {
+    background-position: center 20%;
+    background-size: cover;
+  }
+
+  /* FEATURE CARDS ("Built to Endure", etc) */
+  .features-wrapper {
+    display: flex;
+    flex-direction: column !important;
+    gap: 18px;
+    padding: 0 15px;
+  }
+
+  .feature-card {
+    width: 100% !important;
+    margin: 0 auto;
+  }
+
+  /* GENERAL SPACING */
+  section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 </style>
 </head>
 
