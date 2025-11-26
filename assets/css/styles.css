@@ -45,3 +45,29 @@
 .hero-cta:hover {
   background: #0c58b6;
 }
+.about {
+  padding: 120px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.about-text {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #444;
+}
+
