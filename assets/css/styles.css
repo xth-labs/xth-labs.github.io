@@ -194,3 +194,40 @@
   background: #004dde;
 }
 
+/* NAVIGATION */
+.nav-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.nav-links a:hover {
+  color: #0a63ff;
+}
+
