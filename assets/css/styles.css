@@ -425,5 +425,98 @@
   line-height: 1.7;
 }
 
+/* NETWORK PAGE */
+.network {
+  padding: 60px 20px 100px;
+  background: #f8f9fb;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* STATUS CARDS */
+.net-stats-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.net-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+}
+
+.net-label {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.net-value {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* BLOCKS TABLE */
+.blocks-table {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 120px 120px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.blocks-header {
+  background: #f2f2f4;
+  font-weight: 600;
+}
+
+.blocks-row:last-child {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* PEERS */
+.peers-list {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.peer-item:last-child {
+  border-bottom: none;
+}
 
 
