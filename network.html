@@ -108,55 +108,48 @@
 
   <!-- LIVE NETWORK STATS SCRIPT -->
 <script>
-/*
-  Fake-live network stats
-  Early preview only – real stats will be wired later
-*/
+async function fetchNetworkStats() {
+  try {
+    const res = await fetch('/stats/network.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Network response not ok');
 
-const stats = {
-  height: 890,
-  difficulty: 0.000015,
-  hashrate: 4200, // H/s
-  peers: 1,
-  chain: 'main',
-  lastBlockAge: 120 // seconds
-};
+    const data = await res.json();
+
+    document.getElementById('stat-height').textContent = data.height;
+    document.getElementById('stat-difficulty').textContent =
+      Number(data.difficulty).toExponential(3);
+
+    document.getElementById('stat-hashrate').textContent =
+      formatHashrate(data.hashrate);
+
+    document.getElementById('stat-peers').textContent = data.peers;
+    document.getElementById('stat-chain').textContent = data.chain;
+
+    const ageSecs = Math.max(0, Math.floor(Date.now() / 1000 - data.last_block_time));
+    const mins = Math.floor(ageSecs / 60);
+    document.getElementById('stat-lastblock').textContent =
+      mins <= 0 ? 'just now' : `${mins} min ago`;
+
+  } catch (e) {
+    console.error('Failed to load network stats:', e);
+  }
+}
 
 function formatHashrate(h) {
   if (h < 1e3) return `${Math.round(h)} H/s`;
   if (h < 1e6) return `${(h / 1e3).toFixed(2)} kH/s`;
-  return `${(h / 1e6).toFixed(2)} MH/s`;
+  if (h < 1e9) return `${(h / 1e6).toFixed(2)} MH/s`;
+  return `${(h / 1e9).toFixed(2)} GH/s`;
 }
 
-function updateFakeStats() {
-  // Simulate organic movement
-  stats.height += Math.random() < 0.25 ? 1 : 0;
-  stats.difficulty *= 1 + (Math.random() - 0.5) * 0.02;
-  stats.hashrate *= 1 + (Math.random() - 0.5) * 0.15;
-  stats.peers = Math.max(1, stats.peers + (Math.random() < 0.3 ? 1 : 0) - (Math.random() < 0.2 ? 1 : 0));
-  stats.lastBlockAge = Math.max(30, stats.lastBlockAge + 15 - (Math.random() < 0.3 ? 60 : 0));
+// Initial load
+fetchNetworkStats();
 
-  document.getElementById('stat-height').textContent = stats.height;
-  document.getElementById('stat-difficulty').textContent =
-    stats.difficulty.toExponential(3);
-
-  document.getElementById('stat-hashrate').textContent =
-    formatHashrate(stats.hashrate);
-
-  document.getElementById('stat-peers').textContent = stats.peers;
-  document.getElementById('stat-chain').textContent = stats.chain;
-
-  const mins = Math.floor(stats.lastBlockAge / 60);
-  document.getElementById('stat-lastblock').textContent =
-    mins <= 0 ? 'just now' : `${mins} min ago`;
-}
-
-// Initial render
-updateFakeStats();
-
-// Gentle refresh
-setInterval(updateFakeStats, 30000);
+// Refresh every 30 seconds
+setInterval(fetchNetworkStats, 30000);
 </script>
+
+  
 
 </body>
 </html>
