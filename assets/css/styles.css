@@ -1,3 +1,172 @@
+/* =========================
+   NETWORK PAGE — CORE STYLE
+   ========================= */
+
+.network {
+  background: radial-gradient(1200px 600px at 50% -200px, rgba(120,80,255,0.08), transparent),
+              #050507;
+  padding: 80px 20px 120px;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: #fff;
+}
+
+/* =========================
+   NETWORK STATS GRID
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.net-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.net-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px at top left, rgba(120,80,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.net-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65);
+}
+
+.net-card:hover::after {
+  opacity: 1;
+}
+
+.net-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.net-value {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Subtle live pulse */
+.net-card .net-value {
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: .9; }
+  50% { opacity: 1; }
+  100% { opacity: .9; }
+}
+
+/* =========================
+   BLOCKS TABLE
+   ========================= */
+
+.blocks-table {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 110px 130px;
+  padding: 14px 18px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.blocks-header {
+  background: rgba(255,255,255,0.06);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.6);
+}
+
+.blocks-row:not(.blocks-header) {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.blocks-row:not(.blocks-header):hover {
+  background: rgba(120,80,255,0.06);
+}
+
+/* Monospace hashes */
+.mono {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 13px;
+  color: #cfd2ff;
+}
+
+/* =========================
+   PEERS LIST
+   ========================= */
+
+.peers-list {
+  display: grid;
+  gap: 14px;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: #e6e6ff;
+  position: relative;
+}
+
+.peer-item::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35ff9b;
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(53,255,155,.8);
+}
 .hero {
   background: #f7f7f9;
   padding: 120px 20px 140px;
