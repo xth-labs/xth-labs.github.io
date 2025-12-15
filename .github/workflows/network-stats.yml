@@ -1,0 +1,29 @@
+name: Update Network Stats
+
+on:
+  schedule:
+    - cron: "*/1 * * * *"   # every minute
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch network stats
+        run: |
+          mkdir -p stats
+          curl -s http://xthereon.duckdns.org:8080/network.json > stats/network.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "xthereon-bot"
+          git config user.email "bot@xthereon.org"
+          git add stats/network.json
+          git diff --quiet && exit 0
+          git commit -m "Update network stats"
+          git push
+
