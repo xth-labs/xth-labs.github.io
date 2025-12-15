@@ -9,14 +9,6 @@
   margin-top: 40px;
 }
 
-.net-label {
-  color: #4b5563;               /* muted gray */
-}
-
-.net-value {
-  color: #111827;               /* near-black */
-  text-shadow: none;            /* remove glow for light cards */
-}
 .net-card {
   background: linear-gradient(
     180deg,
@@ -29,6 +21,7 @@
   color: #0f172a;
   font-weight: 600;
 }
+
 
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.45),
