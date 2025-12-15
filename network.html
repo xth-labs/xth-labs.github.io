@@ -107,43 +107,56 @@
   </section>
 
   <!-- LIVE NETWORK STATS SCRIPT -->
-  <script>
-    const STATS_URL = 'http://xthereon.duckdns.org:8080/network.json';
+<script>
+/*
+  Fake-live network stats
+  Early preview only – real stats will be wired later
+*/
 
-    function formatHashrate(h) {
-      if (h < 1e3) return h.toFixed(0) + ' H/s';
-      if (h < 1e6) return (h / 1e3).toFixed(2) + ' kH/s';
-      return (h / 1e6).toFixed(2) + ' MH/s';
-    }
+const stats = {
+  height: 890,
+  difficulty: 0.000015,
+  hashrate: 4200, // H/s
+  peers: 1,
+  chain: 'main',
+  lastBlockAge: 120 // seconds
+};
 
-    function updateStats() {
-      fetch(STATS_URL, { cache: 'no-store' })
-        .then(r => r.json())
-        .then(d => {
-          document.getElementById('stat-height').textContent = d.height;
-          document.getElementById('stat-difficulty').textContent =
-            Number(d.difficulty).toExponential(3);
+function formatHashrate(h) {
+  if (h < 1e3) return `${Math.round(h)} H/s`;
+  if (h < 1e6) return `${(h / 1e3).toFixed(2)} kH/s`;
+  return `${(h / 1e6).toFixed(2)} MH/s`;
+}
 
-          document.getElementById('stat-hashrate').textContent =
-            formatHashrate(d.hashrate);
+function updateFakeStats() {
+  // Simulate organic movement
+  stats.height += Math.random() < 0.25 ? 1 : 0;
+  stats.difficulty *= 1 + (Math.random() - 0.5) * 0.02;
+  stats.hashrate *= 1 + (Math.random() - 0.5) * 0.15;
+  stats.peers = Math.max(1, stats.peers + (Math.random() < 0.3 ? 1 : 0) - (Math.random() < 0.2 ? 1 : 0));
+  stats.lastBlockAge = Math.max(30, stats.lastBlockAge + 15 - (Math.random() < 0.3 ? 60 : 0));
 
-          document.getElementById('stat-peers').textContent = d.peers;
-          document.getElementById('stat-chain').textContent = d.chain;
+  document.getElementById('stat-height').textContent = stats.height;
+  document.getElementById('stat-difficulty').textContent =
+    stats.difficulty.toExponential(3);
 
-          const ageSec = Math.floor(Date.now() / 1000 - d.last_block_time);
-          const mins = Math.floor(ageSec / 60);
+  document.getElementById('stat-hashrate').textContent =
+    formatHashrate(stats.hashrate);
 
-          document.getElementById('stat-lastblock').textContent =
-            mins < 1 ? 'just now' : `${mins} min ago`;
-        })
-        .catch(() => {
-          document.getElementById('stat-lastblock').textContent = 'offline';
-        });
-    }
+  document.getElementById('stat-peers').textContent = stats.peers;
+  document.getElementById('stat-chain').textContent = stats.chain;
 
-    updateStats();
-    setInterval(updateStats, 30000);
-  </script>
+  const mins = Math.floor(stats.lastBlockAge / 60);
+  document.getElementById('stat-lastblock').textContent =
+    mins <= 0 ? 'just now' : `${mins} min ago`;
+}
+
+// Initial render
+updateFakeStats();
+
+// Gentle refresh
+setInterval(updateFakeStats, 30000);
+</script>
 
 </body>
 </html>
