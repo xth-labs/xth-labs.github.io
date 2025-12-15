@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>XTHEREON — Download</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=2">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
       <a href="/" class="nav-logo">XTH</a>
       <div class="nav-links">
         <a href="/">Home</a>
-        <a href="/download.html">Download</a>
+        <a href="/download.html" class="active">Download</a>
         <a href="/docs.html">Docs</a>
         <a href="/network.html">Network</a>
         <a href="/community.html">Community</a>
@@ -27,7 +27,10 @@
   <section class="page-header">
     <div class="page-header-inner">
       <h1>Download XThereon</h1>
-      <p>Choose your platform to run a full node, secure the network, and hold XTH in your own wallet.</p>
+      <p>
+        Get started with XThereon by mining and helping secure the network.
+        Additional wallets and node tools are coming soon.
+      </p>
     </div>
   </section>
 
@@ -37,61 +40,77 @@
 
       <div class="download-grid">
 
-        <!-- Desktop Wallet -->
-        <div class="download-card">
-          <h2>XTH Core Wallet (Desktop)</h2>
-          <p class="download-text">
-            Full node + wallet in one. Recommended for users who want maximum security  
-            and control over their funds.
-          </p>
-          <ul class="download-list">
-            <li>✔ Validates the entire blockchain</li>
-            <li>✔ Sends and receives XTH</li>
-            <li>✔ Stores keys locally on your machine</li>
-          </ul>
-          <div class="download-actions">
-            <a href="#" class="btn-primary">Download for Windows</a>
-            <a href="#" class="btn-secondary">Download for Linux</a>
-          </div>
-          <div class="download-note">Binaries coming soon. Source will be published on GitHub.</div>
-        </div>
-
-        <!-- CLI / Node -->
-        <div class="download-card">
-          <h2>Command-Line Node</h2>
-          <p class="download-text">
-            Lightweight, scriptable node for servers and advanced users.  
-            Ideal for running infrastructure, explorers, and services.
-          </p>
-          <ul class="download-list">
-            <li>✔ Headless operation</li>
-            <li>✔ RPC interface</li>
-            <li>✔ Easy to automate</li>
-          </ul>
-          <div class="download-actions">
-            <a href="#" class="btn-primary">Download (Linux)</a>
-            <a href="https://github.com/xth-labs/xthereon" class="btn-link" target="_blank">View on GitHub →</a>
-          </div>
-          <div class="download-note">Recommended for VPS / dedicated servers.</div>
-        </div>
-
-        <!-- Miner -->
-        <div class="download-card">
+        <!-- CPU MINER (PRIMARY) -->
+        <div class="download-card featured">
           <h2>XTH CPU Miner</h2>
           <p class="download-text">
-            A simple CPU-based miner to help secure the network and earn XTH.  
-            Best suited for early adopters and testing.
+            A one-click CPU miner designed to make participating in the XThereon
+            network simple and accessible.
           </p>
+
           <ul class="download-list">
-            <li>✔ Connects directly to your node</li>
-            <li>✔ Simple configuration</li>
-            <li>✔ Great for learning how XTH mining works</li>
+            <li>✔ Automatically manages the node and wallet</li>
+            <li>✔ No configuration required</li>
+            <li>✔ Earn XTH while helping secure the network</li>
+            <li>✔ Ideal for early adopters and testing</li>
           </ul>
+
           <div class="download-actions">
-            <a href="#" class="btn-primary">Download Miner</a>
-            <a href="/docs.html#mining" class="btn-secondary">Read Mining Guide</a>
+            <a href="#" class="btn-primary">Download for Windows</a>
+            <a href="#" class="btn-secondary">Download for Ubuntu</a>
           </div>
-          <div class="download-note">Mining parameters and config examples will be documented in Docs.</div>
+
+          <div class="download-note">
+            Includes the XThereon daemon and wallet components.<br>
+            Closing the miner window will stop mining.
+          </div>
+        </div>
+
+        <!-- CORE WALLET (COMING SOON) -->
+        <div class="download-card muted">
+          <h2>XTH Core Wallet (Desktop)</h2>
+          <p class="download-text">
+            A full-node desktop wallet with a graphical interface for managing XTH.
+          </p>
+
+          <ul class="download-list">
+            <li>✔ Full blockchain validation</li>
+            <li>✔ Send and receive XTH</li>
+            <li>✔ Local key storage</li>
+          </ul>
+
+          <div class="download-actions">
+            <span class="btn-disabled">Coming Soon</span>
+          </div>
+
+          <div class="download-note">
+            Desktop wallet builds will be published once finalized.
+          </div>
+        </div>
+
+        <!-- COMMAND-LINE NODE (COMING SOON) -->
+        <div class="download-card muted">
+          <h2>Command-Line Node</h2>
+          <p class="download-text">
+            Headless node for servers, infrastructure, and advanced users.
+          </p>
+
+          <ul class="download-list">
+            <li>✔ RPC interface</li>
+            <li>✔ Scriptable and lightweight</li>
+            <li>✔ Suitable for VPS and services</li>
+          </ul>
+
+          <div class="download-actions">
+            <span class="btn-disabled">Coming Soon</span>
+            <a href="https://github.com/xth-labs/xthereon" class="btn-link" target="_blank">
+              View Source →
+            </a>
+          </div>
+
+          <div class="download-note">
+            Linux binaries will be released after initial network stabilization.
+          </div>
         </div>
 
       </div>
@@ -101,4 +120,3 @@
 
 </body>
 </html>
-
