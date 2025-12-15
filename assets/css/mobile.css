@@ -1,3 +1,39 @@
+/* =========================
+   MOBILE NETWORK TUNING
+   ========================= */
+
+@media (max-width: 640px) {
+
+  .net-stats-grid {
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .net-card {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+
+  .net-value {
+    font-size: 1.7rem;
+    text-shadow: 0 0 12px rgba(120, 120, 255, 0.2);
+  }
+
+  .net-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Reduce glow intensity on mobile (battery + clarity) */
+  .net-card.updated::after {
+    box-shadow: 0 0 14px rgba(120, 160, 255, 0.45);
+  }
+
+  /* Slightly slower heartbeat on mobile */
+  .net-note::before {
+    animation-duration: 2s;
+  }
+}
 /* ================================
    MOBILE LAYOUT FIXES FOR XTHEREON
    ================================ */
