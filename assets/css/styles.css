@@ -9,15 +9,27 @@
   margin-top: 40px;
 }
 
+.net-label {
+  color: #4b5563;               /* muted gray */
+}
+
+.net-value {
+  color: #111827;               /* near-black */
+  text-shadow: none;            /* remove glow for light cards */
+}
 .net-card {
-  position: relative;
-  padding: 26px 24px;
-  border-radius: 16px;
   background: linear-gradient(
     180deg,
-    rgba(20, 20, 26, 0.9),
-    rgba(14, 14, 18, 0.95)
+    #ffffff,
+    #f8f9fc
   );
+}
+
+.net-value {
+  color: #0f172a;
+  font-weight: 600;
+}
+
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
