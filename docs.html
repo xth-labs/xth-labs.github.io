@@ -11,13 +11,12 @@
 
   <!-- NAVIGATION -->
   <header class="nav-header">
-  <header class="nav-header">
     <nav class="nav">
       <a href="/" class="nav-logo">XTH</a>
       <div class="nav-links">
         <a href="/">Home</a>
         <a href="/download.html">Download</a>
-        <a href="/docs.html">Docs</a>
+        <a href="/docs.html" class="active">Docs</a>
         <a href="/network.html">Network</a>
         <a href="/community.html">Community</a>
         <a href="https://github.com/xth-labs/xthereon">X-GitHub</a>
@@ -29,7 +28,10 @@
   <section class="page-header">
     <div class="page-header-inner">
       <h1>XTH Documentation</h1>
-      <p>Your complete guide to running the XThereon network, node, wallet, and miner.</p>
+      <p>
+        Practical documentation for running the XThereon network,
+        mining XTH, and operating your own infrastructure.
+      </p>
     </div>
   </section>
 
@@ -39,25 +41,21 @@
 
       <div class="docs-grid">
 
-        <!-- Quick Start -->
         <a href="#quickstart" class="docs-card">
           <h2>Quick Start</h2>
-          <p>Install the wallet, sync the chain, and get running fast.</p>
+          <p>Get up and running with XThereon in minutes.</p>
         </a>
 
-        <!-- Mining -->
         <a href="#mining" class="docs-card">
           <h2>Mining Setup</h2>
-          <p>How to mine XTH with CPU and join the network.</p>
+          <p>Earn XTH by contributing compute power.</p>
         </a>
 
-        <!-- Node -->
         <a href="#node" class="docs-card">
           <h2>Running a Node</h2>
-          <p>Operate your own full node for maximum security.</p>
+          <p>Operate a full node to strengthen the network.</p>
         </a>
 
-        <!-- RPC -->
         <a href="#rpc" class="docs-card">
           <h2>RPC Commands</h2>
           <p>Interact with your node programmatically.</p>
@@ -68,32 +66,132 @@
     </div>
   </section>
 
-  <!-- SECTIONS -->
+  <!-- QUICK START -->
   <section id="quickstart" class="doc-section">
     <div class="doc-section-inner">
       <h2>Quick Start</h2>
-      <p>This section will include installation steps for Windows, Linux, and how to sync for the first time.</p>
+
+      <p>
+        XThereon is designed to be used without complex setup.
+        The fastest way to participate is by running the CPU miner,
+        which automatically manages the node and wallet.
+      </p>
+
+      <h3>Recommended (Windows)</h3>
+      <ol>
+        <li>Download the XTH CPU Miner from the <a href="/download.html">Download</a> page</li>
+        <li>Run the installer and launch the miner</li>
+        <li>The node will sync automatically</li>
+        <li>Mining begins once the network is ready</li>
+      </ol>
+
+      <h3>Linux (Ubuntu)</h3>
+      <ol>
+        <li>Extract the miner archive</li>
+        <li>Run <code>./xthminer</code></li>
+        <li>Data is stored in <code>~/.xthereon</code></li>
+      </ol>
+
+      <p class="doc-note">
+        XTH is not pre-allocated or sold.
+        Coins enter circulation only through mining.
+      </p>
     </div>
   </section>
 
+  <!-- MINING -->
   <section id="mining" class="doc-section">
     <div class="doc-section-inner">
       <h2>Mining XTH</h2>
-      <p>This will include CPU miner usage, flags, and example configs.</p>
+
+      <p>
+        Mining is the primary way XTH enters circulation.
+        By mining, you help secure the network and earn XTH in return.
+      </p>
+
+      <h3>CPU Mining</h3>
+      <p>
+        The official XTH miner uses CPU-based proof-of-work.
+        No pools, accounts, or third-party services are required.
+      </p>
+
+      <ul>
+        <li>✔ Automatic wallet creation</li>
+        <li>✔ Automatic node startup</li>
+        <li>✔ Solo mining by default</li>
+      </ul>
+
+      <h3>Important Notes</h3>
+      <ul>
+        <li>Mining uses CPU resources</li>
+        <li>Closing the miner stops mining</li>
+        <li>Block rewards mature after confirmation</li>
+      </ul>
     </div>
   </section>
 
+  <!-- NODE -->
   <section id="node" class="doc-section">
     <div class="doc-section-inner">
       <h2>Running a Full Node</h2>
-      <p>Guide for node operators and server admins.</p>
+
+      <p>
+        Running a full node gives you maximum control and helps
+        decentralize the XThereon network.
+      </p>
+
+      <p>
+        A full node:
+      </p>
+
+      <ul>
+        <li>Validates every block and transaction</li>
+        <li>Enforces consensus rules independently</li>
+        <li>Does not rely on third parties</li>
+      </ul>
+
+      <h3>Who should run a node?</h3>
+      <p>
+        Anyone can run a node, but it is especially recommended for:
+      </p>
+
+      <ul>
+        <li>Miners</li>
+        <li>Infrastructure operators</li>
+        <li>Long-term participants</li>
+      </ul>
+
+      <p class="doc-note">
+        Dedicated server binaries will be published once the network matures.
+      </p>
     </div>
   </section>
 
+  <!-- RPC -->
   <section id="rpc" class="doc-section">
     <div class="doc-section-inner">
       <h2>RPC Commands</h2>
-      <p>Reference for wallet + node RPC calls.</p>
+
+      <p>
+        XThereon nodes expose a JSON-RPC interface for automation,
+        scripting, and integration with external services.
+      </p>
+
+      <h3>Common Commands</h3>
+
+      <pre><code>xthereon-cli getblockcount
+xthereon-cli getwalletinfo
+xthereon-cli getnewaddress
+xthereon-cli getbalance</code></pre>
+
+      <p>
+        RPC access is local by default and should not be exposed
+        to the public internet.
+      </p>
+
+      <p class="doc-note">
+        A full RPC reference will be expanded as the project evolves.
+      </p>
     </div>
   </section>
 
