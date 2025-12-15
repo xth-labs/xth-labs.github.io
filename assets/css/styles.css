@@ -817,3 +817,1656 @@
 .primary-link:hover {
   text-decoration: underline;
 }
+/* =========================
+   NETWORK HUMMING EFFECTS
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.net-card {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8f9fc
+  );
+}
+
+.net-value {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.net-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.net-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Pulse glow when data updates */
+.net-card.updated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 22px rgba(120, 160, 255, 0.55);
+  opacity: 0;
+  animation: pulseGlow 1.2s ease-out;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* =========================
+   NETWORK ACTIVITY INDICATOR
+   ========================= */
+
+.net-note {
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: rgba(200, 220, 255, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.net-note::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4cff9a;
+  box-shadow: 0 0 12px rgba(76, 255, 154, 0.8);
+  animation: heartbeat 1.6s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.85); opacity: 0.6; }
+}
+
+/* =========================
+   NETWORK PAGE — CORE STYLE
+   ========================= */
+
+.network {
+  background: radial-gradient(1200px 600px at 50% -200px, rgba(120,80,255,0.08), transparent),
+              #050507;
+  padding: 80px 20px 120px;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: #fff;
+}
+
+/* =========================
+   NETWORK STATS GRID
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.net-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.net-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px at top left, rgba(120,80,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.net-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65);
+}
+
+.net-card:hover::after {
+  opacity: 1;
+}
+
+.net-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.net-value {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Subtle live pulse */
+.net-card .net-value {
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: .9; }
+  50% { opacity: 1; }
+  100% { opacity: .9; }
+}
+
+/* =========================
+   BLOCKS TABLE
+   ========================= */
+
+.blocks-table {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 110px 130px;
+  padding: 14px 18px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.blocks-header {
+  background: rgba(255,255,255,0.06);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.6);
+}
+
+.blocks-row:not(.blocks-header) {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.blocks-row:not(.blocks-header):hover {
+  background: rgba(120,80,255,0.06);
+}
+
+/* Monospace hashes */
+.mono {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 13px;
+  color: #cfd2ff;
+}
+
+/* =========================
+   PEERS LIST
+   ========================= */
+
+.peers-list {
+  display: grid;
+  gap: 14px;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: #e6e6ff;
+  position: relative;
+}
+
+.peer-item::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35ff9b;
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(53,255,155,.8);
+}
+.hero {
+  background: #f7f7f9;
+  padding: 120px 20px 140px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 480px;
+}
+
+.hero-logo {
+  width: 80px;
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 28px;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #1a73e8;
+  color: #fff;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.hero-cta:hover {
+  background: #0c58b6;
+}
+.about {
+  padding: 120px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.about-text {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #444;
+}
+/* TECHNOLOGY SECTION */
+.tech {
+  padding: 120px 24px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.tech-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tech-sub {
+  font-size: 16px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  background: #fafafa;
+  transition: all 0.25s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.tech-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.tech-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* MINING SECTION */
+.mining {
+  padding: 120px 24px;
+  text-align: center;
+  background: #f7f7f7;
+}
+
+.mining-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.mining-sub {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.mining-grid {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.mining-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  transition: all 0.25s ease-in-out;
+}
+
+.mining-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+}
+
+.mining-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.mining-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.mining-cta {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #0a63ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.mining-cta:hover {
+  background: #004dde;
+}
+
+/* NAVIGATION */
+.nav-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.nav-links a:hover {
+  color: #0a63ff;
+}
+/* PAGE HEADER (GENERIC) */
+.page-header {
+  padding: 80px 20px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.page-header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* DOWNLOAD PAGE */
+.download {
+  padding: 60px 20px 120px;
+  background: #f7f7f9;
+}
+
+.download-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.download-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.download-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  padding: 28px 24px 26px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+}
+
+.download-card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.download-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.download-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 18px;
+}
+
+.download-list li {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 10px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: #0a63ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #004dde;
+}
+
+.btn-secondary {
+  background: #f5f5f7;
+  color: #111;
+  border-color: #ddd;
+}
+
+.btn-secondary:hover {
+  background: #e8e8ee;
+}
+
+.btn-link {
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+  border: none;
+  color: #0a63ff;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.download-note {
+  font-size: 12px;
+  color: #777;
+}
+/* DOCS PAGE */
+.docs {
+  padding: 60px 20px 100px;
+}
+
+.docs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.docs-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.docs-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: #111;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.docs-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+}
+
+.docs-card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.docs-card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* DOC SECTIONS */
+.doc-section {
+  padding: 60px 20px;
+  background: #fafafb;
+  border-top: 1px solid #eee;
+}
+
+.doc-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.doc-section h2 {
+  margin-bottom: 12px;
+  font-size: 26px;
+}
+
+.doc-section p {
+  color: #555;
+  line-height: 1.7;
+}
+
+/* NETWORK PAGE */
+.network {
+  padding: 60px 20px 100px;
+  background: #f8f9fb;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* STATUS CARDS */
+.net-stats-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.net-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+}
+
+.net-label {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.net-value {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* BLOCKS TABLE */
+.blocks-table {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 120px 120px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.blocks-header {
+  background: #f2f2f4;
+  font-weight: 600;
+}
+
+.blocks-row:last-child {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* PEERS */
+.peers-list {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.peer-item:last-child {
+  border-bottom: none;
+}
+
+/* COMMUNITY PAGE */
+/* COMMUNITY */
+
+.community-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.community-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.community-card {
+  flex: 1;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+
+.community-card h3 {
+  margin-bottom: 12px;
+}
+
+.primary-link {
+  color: #2463eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.primary-link:hover {
+  text-decoration: underline;
+}
+/* =========================
+   NETWORK HUMMING EFFECTS
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.net-card {
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8f9fc
+  );
+}
+
+.net-value {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.net-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.net-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Pulse glow when data updates */
+.net-card.updated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 22px rgba(120, 160, 255, 0.55);
+  opacity: 0;
+  animation: pulseGlow 1.2s ease-out;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* =========================
+   NETWORK ACTIVITY INDICATOR
+   ========================= */
+
+.net-note {
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: rgba(200, 220, 255, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.net-note::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4cff9a;
+  box-shadow: 0 0 12px rgba(76, 255, 154, 0.8);
+  animation: heartbeat 1.6s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.85); opacity: 0.6; }
+}
+
+/* =========================
+   NETWORK PAGE — CORE STYLE
+   ========================= */
+
+.network {
+  background: radial-gradient(1200px 600px at 50% -200px, rgba(120,80,255,0.08), transparent),
+              #050507;
+  padding: 80px 20px 120px;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: #fff;
+}
+
+/* =========================
+   NETWORK STATS GRID
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.net-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.net-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px at top left, rgba(120,80,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.net-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.65);
+}
+
+.net-card:hover::after {
+  opacity: 1;
+}
+
+.net-label {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.net-value {
+  display: block;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Subtle live pulse */
+.net-card .net-value {
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: .9; }
+  50% { opacity: 1; }
+  100% { opacity: .9; }
+}
+
+/* =========================
+   BLOCKS TABLE
+   ========================= */
+
+.blocks-table {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 110px 130px;
+  padding: 14px 18px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.blocks-header {
+  background: rgba(255,255,255,0.06);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.6);
+}
+
+.blocks-row:not(.blocks-header) {
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.blocks-row:not(.blocks-header):hover {
+  background: rgba(120,80,255,0.06);
+}
+
+/* Monospace hashes */
+.mono {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 13px;
+  color: #cfd2ff;
+}
+
+/* =========================
+   PEERS LIST
+   ========================= */
+
+.peers-list {
+  display: grid;
+  gap: 14px;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: #e6e6ff;
+  position: relative;
+}
+
+.peer-item::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35ff9b;
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(53,255,155,.8);
+}
+.hero {
+  background: #f7f7f9;
+  padding: 120px 20px 140px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-inner {
+  max-width: 480px;
+}
+
+.hero-logo {
+  width: 80px;
+  opacity: 0.9;
+  margin-bottom: 32px;
+}
+
+.hero-title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #111;
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 28px;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #1a73e8;
+  color: #fff;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.hero-cta:hover {
+  background: #0c58b6;
+}
+.about {
+  padding: 120px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-top: 1px solid #eee;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.about-text {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #444;
+}
+/* TECHNOLOGY SECTION */
+.tech {
+  padding: 120px 24px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.tech-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.tech-sub {
+  font-size: 16px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  background: #fafafa;
+  transition: all 0.25s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.tech-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.tech-card p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* MINING SECTION */
+.mining {
+  padding: 120px 24px;
+  text-align: center;
+  background: #f7f7f7;
+}
+
+.mining-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.mining-sub {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.mining-grid {
+  max-width: 1000px;
+  margin: 0 auto 60px;
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.mining-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  transition: all 0.25s ease-in-out;
+}
+
+.mining-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+}
+
+.mining-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.mining-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.mining-cta {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #0a63ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.mining-cta:hover {
+  background: #004dde;
+}
+
+/* NAVIGATION */
+.nav-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 24px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.nav-links a:hover {
+  color: #0a63ff;
+}
+/* PAGE HEADER (GENERIC) */
+.page-header {
+  padding: 80px 20px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.page-header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.page-header h1 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.page-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* DOWNLOAD PAGE */
+.download {
+  padding: 60px 20px 120px;
+  background: #f7f7f9;
+}
+
+.download-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.download-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.download-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e2e2;
+  padding: 28px 24px 26px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+}
+
+.download-card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.download-text {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.download-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 18px;
+}
+
+.download-list li {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 40px;
+  padding: 10px 18px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: #0a63ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #004dde;
+}
+
+.btn-secondary {
+  background: #f5f5f7;
+  color: #111;
+  border-color: #ddd;
+}
+
+.btn-secondary:hover {
+  background: #e8e8ee;
+}
+
+.btn-link {
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+  border: none;
+  color: #0a63ff;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.download-note {
+  font-size: 12px;
+  color: #777;
+}
+/* DOCS PAGE */
+.docs {
+  padding: 60px 20px 100px;
+}
+
+.docs-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.docs-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.docs-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: #111;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.docs-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.06);
+}
+
+.docs-card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.docs-card p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* DOC SECTIONS */
+.doc-section {
+  padding: 60px 20px;
+  background: #fafafb;
+  border-top: 1px solid #eee;
+}
+
+.doc-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.doc-section h2 {
+  margin-bottom: 12px;
+  font-size: 26px;
+}
+
+.doc-section p {
+  color: #555;
+  line-height: 1.7;
+}
+
+/* NETWORK PAGE */
+.network {
+  padding: 60px 20px 100px;
+  background: #f8f9fb;
+}
+
+.network-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* STATUS CARDS */
+.net-stats-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.net-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+}
+
+.net-label {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.net-value {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* BLOCKS TABLE */
+.blocks-table {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.blocks-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 120px 120px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.blocks-header {
+  background: #f2f2f4;
+  font-weight: 600;
+}
+
+.blocks-row:last-child {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* PEERS */
+.peers-list {
+  margin-top: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.peer-item {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.peer-item:last-child {
+  border-bottom: none;
+}
+
+/* COMMUNITY PAGE */
+/* COMMUNITY */
+
+.community-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.community-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.community-card {
+  flex: 1;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+
+.community-card h3 {
+  margin-bottom: 12px;
+}
+
+.primary-link {
+  color: #2463eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.primary-link:hover {
+  text-decoration: underline;
+}
+/* =========================
+   NETWORK FINAL OVERRIDES
+   ========================= */
+
+.network .net-card {
+  background: #ffffff;
+}
+
+.network .net-label {
+  color: #6b7280; /* gray-500 */
+}
+
+.network .net-value {
+  color: #111827; /* near-black */
+}
