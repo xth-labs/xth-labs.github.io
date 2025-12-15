@@ -8,6 +8,18 @@
     gap: 16px;
     margin-top: 28px;
   }
+@media (max-width: 640px) {
+
+  .net-label {
+    color: #4b5563; /* readable gray */
+  }
+
+  .net-value {
+    color: #111827; /* strong contrast */
+    text-shadow: none; /* optional: clearer in sunlight */
+  }
+
+}
 
   .net-card {
     padding: 20px 18px;
@@ -19,10 +31,7 @@
     text-shadow: 0 0 12px rgba(120, 120, 255, 0.2);
   }
 
-  .net-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-  }
+
 
   /* Reduce glow intensity on mobile (battery + clarity) */
   .net-card.updated::after {
