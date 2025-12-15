@@ -1,4 +1,99 @@
 /* =========================
+   NETWORK HUMMING EFFECTS
+   ========================= */
+
+.net-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.net-card {
+  position: relative;
+  padding: 26px 24px;
+  border-radius: 16px;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 20, 26, 0.9),
+    rgba(14, 14, 18, 0.95)
+  );
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.net-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.net-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.net-value {
+  display: block;
+  margin-top: 10px;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #e8e8ff;
+  text-shadow: 0 0 18px rgba(120, 120, 255, 0.25);
+}
+
+/* Pulse glow when data updates */
+.net-card.updated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 22px rgba(120, 160, 255, 0.55);
+  opacity: 0;
+  animation: pulseGlow 1.2s ease-out;
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* =========================
+   NETWORK ACTIVITY INDICATOR
+   ========================= */
+
+.net-note {
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: rgba(200, 220, 255, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.net-note::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4cff9a;
+  box-shadow: 0 0 12px rgba(76, 255, 154, 0.8);
+  animation: heartbeat 1.6s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.85); opacity: 0.6; }
+}
+
+/* =========================
    NETWORK PAGE — CORE STYLE
    ========================= */
 
