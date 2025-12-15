@@ -1,9 +1,9 @@
 {
-  "height": 2215,
+  "height": 2216,
   "difficulty": 0.0001541477479031673,
-  "hashrate": 4816.214839961202,
+  "hashrate": 4767.373537353736,
   "peers": 1,
   "chain": "main",
-  "last_block_time": 1765835197,
-  "updated": 1765835401
+  "last_block_time": 1765835401,
+  "updated": 1765835701
 }
