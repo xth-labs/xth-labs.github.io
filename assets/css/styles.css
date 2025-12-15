@@ -44,14 +44,6 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
-.net-value {
-  display: block;
-  margin-top: 10px;
-  font-size: 2.1rem;
-  font-weight: 600;
-  color: #e8e8ff;
-  text-shadow: 0 0 18px rgba(120, 120, 255, 0.25);
-}
 
 /* Pulse glow when data updates */
 .net-card.updated::after {
