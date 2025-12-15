@@ -23,17 +23,16 @@ jobs:
           cat stats/network.json
 
       - name: Commit and push stats
-  run: |
-    git config user.name "xthereon-bot"
-    git config user.email "bot@xthereon.org"
+        run: |
+          git config user.name "xthereon-bot"
+          git config user.email "bot@xthereon.org"
 
-    git add stats/network.json
+          git add stats/network.json
 
-    if git diff --cached --quiet; then
-      echo "No changes to commit"
-      exit 0
-    fi
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
 
-    git commit -m "Update network stats"
-    git push
-
+          git commit -m "Update network stats"
+          git push
