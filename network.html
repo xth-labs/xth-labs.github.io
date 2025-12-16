@@ -54,7 +54,6 @@
           <span class="net-value" id="stat-hashrate">—</span>
         </div>
 
-
         <div class="net-card">
           <span class="net-label">Last Block</span>
           <span class="net-value" id="stat-lastblock">—</span>
@@ -71,7 +70,7 @@
         Live data from an active XThereon node. Updates every 30 seconds.
       </p>
 
-      <!-- RECENT BLOCKS (preview / future live) -->
+      <!-- RECENT BLOCKS -->
       <h2 class="section-title" style="margin-top:60px;">Recent Blocks</h2>
 
       <div class="blocks-table">
@@ -84,15 +83,11 @@
           <div>Miner</div>
         </div>
 
-        <div class="blocks-row">
-          <div colspan="5" style="opacity:.6;">
-            Live block listing coming soon.
-          </div>
-        </div>
+        <div id="blocks-body"></div>
 
       </div>
 
-      <!-- PEERS (preview / future live) -->
+      <!-- PEERS -->
       <h2 class="section-title" style="margin-top:60px;">Connected Peers</h2>
 
       <div class="peers-list">
@@ -103,39 +98,52 @@
   </section>
 
   <!-- LIVE NETWORK STATS SCRIPT -->
-<script>
+ <script>
 let lastData = null;
+let lastUpdateTs = 0;
 
 async function fetchNetworkStats() {
   try {
-    const res = await fetch('/stats/network.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error('Network response not ok');
+    const res = await fetch('/stats/network.json?_=' + Date.now(), {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('Bad response');
 
     const data = await res.json();
 
+    // basic sanity
+    if (!data || !data.height) return;
+
     updateStat('stat-height', data.height);
-    updateStat(
-      'stat-difficulty',
-      Number(data.difficulty).toExponential(3)
-    );
-    updateStat(
-      'stat-hashrate',
-      formatHashrate(data.hashrate)
-    );
-    updateStat('stat-peers', data.peers);
+    updateStat('stat-difficulty', Number(data.difficulty).toExponential(3));
+    updateStat('stat-hashrate', formatHashrate(data.hashrate));
     updateStat('stat-chain', data.chain);
 
-    const ageSecs = Math.max(0, Math.floor(Date.now() / 1000 - data.last_block_time));
+    // last block age
+    const ageSecs = Math.max(
+      0,
+      Math.floor(Date.now() / 1000 - data.last_block_time)
+    );
     const mins = Math.floor(ageSecs / 60);
     updateStat(
       'stat-lastblock',
       mins <= 0 ? 'just now' : `${mins} min ago`
     );
 
+    // only re-render blocks if they changed
+    if (
+      !lastData ||
+      JSON.stringify(lastData.recent_blocks) !==
+        JSON.stringify(data.recent_blocks)
+    ) {
+      renderBlocks(data.recent_blocks, data.last_block_time);
+    }
+
     lastData = data;
+    lastUpdateTs = Date.now();
 
   } catch (e) {
-    console.error('Failed to load network stats:', e);
+    console.warn('Network stats unavailable (will retry)', e);
   }
 }
 
@@ -149,7 +157,7 @@ function updateStat(id, value) {
     const card = el.closest('.net-card');
     if (card) {
       card.classList.remove('updated');
-      void card.offsetWidth; // restart animation
+      void card.offsetWidth;
       card.classList.add('updated');
     }
   }
@@ -162,13 +170,36 @@ function formatHashrate(h) {
   return `${(h / 1e9).toFixed(2)} GH/s`;
 }
 
+function renderBlocks(blocks, lastBlockTime) {
+  const body = document.getElementById('blocks-body');
+  if (!body || !Array.isArray(blocks)) return;
+
+  body.innerHTML = '';
+  const now = Math.floor(Date.now() / 1000);
+
+  blocks.forEach((b, idx) => {
+    const ageSecs = Math.max(0, now - lastBlockTime - idx * 60);
+    const mins = Math.floor(ageSecs / 60);
+
+    const row = document.createElement('div');
+    row.className = 'blocks-row';
+
+    row.innerHTML = `
+      <div>#${b.height}</div>
+      <div style="font-family:monospace">${b.hash.slice(0, 18)}…</div>
+      <div>${mins <= 0 ? 'just now' : `${mins} min ago`}</div>
+      <div>—</div>
+      <div>—</div>
+    `;
+
+    body.appendChild(row);
+  });
+}
+
+// aggressive + reliable polling
 fetchNetworkStats();
-setInterval(fetchNetworkStats, 30000);
+setInterval(fetchNetworkStats, 10000); // every 10 seconds
 </script>
-
-
-  
 
 </body>
 </html>
-
