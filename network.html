@@ -91,9 +91,9 @@
     
 
   <!-- LIVE NETWORK STATS SCRIPT -->
- <script>
+<!-- LIVE NETWORK STATS SCRIPT -->
+<script>
 let lastData = null;
-let lastUpdateTs = 0;
 
 async function fetchNetworkStats() {
   try {
@@ -103,8 +103,6 @@ async function fetchNetworkStats() {
     if (!res.ok) throw new Error('Bad response');
 
     const data = await res.json();
-
-    // basic sanity
     if (!data || !data.height) return;
 
     updateStat('stat-height', data.height);
@@ -112,7 +110,6 @@ async function fetchNetworkStats() {
     updateStat('stat-hashrate', formatHashrate(data.hashrate));
     updateStat('stat-chain', data.chain);
 
-    // last block age
     const ageSecs = Math.max(
       0,
       Math.floor(Date.now() / 1000 - data.last_block_time)
@@ -123,7 +120,6 @@ async function fetchNetworkStats() {
       mins <= 0 ? 'just now' : `${mins} min ago`
     );
 
-    // only re-render blocks if they changed
     if (
       !lastData ||
       JSON.stringify(lastData.recent_blocks) !==
@@ -133,7 +129,6 @@ async function fetchNetworkStats() {
     }
 
     lastData = data;
-    lastUpdateTs = Date.now();
 
   } catch (e) {
     console.warn('Network stats unavailable (will retry)', e);
@@ -163,17 +158,14 @@ function formatHashrate(h) {
   return `${(h / 1e9).toFixed(2)} GH/s`;
 }
 
-<script>
 function renderBlocks(blocks, lastBlockTime) {
   const body = document.getElementById('blocks-body');
   if (!body || !Array.isArray(blocks)) return;
 
   body.innerHTML = '';
-
   const now = Math.floor(Date.now() / 1000);
 
   blocks.forEach((b, idx) => {
-    // Estimate age assuming average block spacing
     const estAgeSecs = Math.max(0, now - lastBlockTime + idx * 60);
     const mins = Math.floor(estAgeSecs / 60);
 
@@ -192,13 +184,13 @@ function renderBlocks(blocks, lastBlockTime) {
       <div style="font-family:monospace">${b.hash.slice(0, 18)}…</div>
       <div>${ageLabel}</div>
       <div>50 XTH</div>
-    
     `;
 
     body.appendChild(row);
   });
 }
-</script>
 
-</body>
-</html>
+// start polling
+fetchNetworkStats();
+setInterval(fetchNetworkStats, 10000);
+</script>
