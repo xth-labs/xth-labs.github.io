@@ -166,7 +166,7 @@ function renderBlocks(blocks, lastBlockTime) {
   const now = Math.floor(Date.now() / 1000);
 
   blocks.forEach((b, idx) => {
-    const estAgeSecs = Math.max(0, now - lastBlockTime + idx * 60);
+    const estAgeSecs = Math.max(0, now - lastBlockTime + idx * 180);
     const mins = Math.floor(estAgeSecs / 60);
 
     const ageLabel =
