@@ -80,7 +80,7 @@
           <div>Hash</div>
           <div>Age</div>
           <div>Reward</div>
-          <div>Miner</div>
+          
         </div>
 
         <div id="blocks-body"></div>
@@ -163,16 +163,26 @@ function formatHashrate(h) {
   return `${(h / 1e9).toFixed(2)} GH/s`;
 }
 
+<script>
 function renderBlocks(blocks, lastBlockTime) {
   const body = document.getElementById('blocks-body');
   if (!body || !Array.isArray(blocks)) return;
 
   body.innerHTML = '';
+
   const now = Math.floor(Date.now() / 1000);
 
   blocks.forEach((b, idx) => {
-    const ageSecs = Math.max(0, now - lastBlockTime - idx * 60);
-    const mins = Math.floor(ageSecs / 60);
+    // Estimate age assuming average block spacing
+    const estAgeSecs = Math.max(0, now - lastBlockTime + idx * 60);
+    const mins = Math.floor(estAgeSecs / 60);
+
+    const ageLabel =
+      mins <= 0
+        ? 'just now'
+        : mins === 1
+        ? '1 min ago'
+        : `${mins} min ago`;
 
     const row = document.createElement('div');
     row.className = 'blocks-row';
@@ -180,18 +190,14 @@ function renderBlocks(blocks, lastBlockTime) {
     row.innerHTML = `
       <div>#${b.height}</div>
       <div style="font-family:monospace">${b.hash.slice(0, 18)}…</div>
-      <div>${mins <= 0 ? 'just now' : `${mins} min ago`}</div>
-      <div>—</div>
-      <div>—</div>
+      <div>${ageLabel}</div>
+      <div>50 XTH</div>
+    
     `;
 
     body.appendChild(row);
   });
 }
-
-// aggressive + reliable polling
-fetchNetworkStats();
-setInterval(fetchNetworkStats, 10000); // every 10 seconds
 </script>
 
 </body>
