@@ -68,7 +68,7 @@
 .net-note {
   margin-top: 28px;
   font-size: 0.9rem;
-  color: rgba(200, 220, 255, 0.75);
+  color: rgba(84, 245, 39, 1);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -111,7 +111,7 @@
   font-weight: 600;
   letter-spacing: -0.02em;
   margin-bottom: 28px;
-  color: #fff;
+  color: #000;
 }
 
 /* =========================
