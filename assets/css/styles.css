@@ -2470,3 +2470,20 @@
 .network .net-value {
   color: #111827; /* near-black */
 }
+/* =========================
+   NETWORK PAGE READABILITY
+   ========================= */
+
+.net-note {
+  color: #334155;          /* slate-700 */
+  font-size: 0.95rem;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+.section-title {
+  color: #0f172a;          /* slate-900 */
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
