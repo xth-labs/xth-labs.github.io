@@ -1,10 +1,13 @@
-{
-  "height": ,
-  "difficulty": ,
-  "hashrate": ,
-  "peers": ,
-  "chain": "",
-  "last_block_time": ,
-  "recent_blocks": [{"height":0,"hash":""},{"height":-1,"hash":""},{"height":-2,"hash":""},{"height":-3,"hash":""},{"height":-4,"hash":""},{"height":-5,"hash":""},{"height":-6,"hash":""},{"height":-7,"hash":""},{"height":-8,"hash":""},{"height":-9,"hash":""},{"height":-10,"hash":""},{"height":-11,"hash":""},{"height":-12,"hash":""},{"height":-13,"hash":""},{"height":-14,"hash":""},{"height":-15,"hash":""},{"height":-16,"hash":""},{"height":-17,"hash":""},{"height":-18,"hash":""},{"height":-19,"hash":""}],
-  "updated": 1769220181
-}
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Error response</title>
+    </head>
+    <body>
+        <h1>Error response</h1>
+        <p>Error code: 404</p>
+        <p>Message: File not found.</p>
+        <p>Error code explanation: 404 - Nothing matches the given URI.</p>
+    </body>
+</html>
